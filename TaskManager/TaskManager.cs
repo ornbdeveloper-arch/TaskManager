@@ -1,59 +1,80 @@
 ﻿namespace TaskManager;
 using System;
-
+using System.Collections.Generic; // Garante que a List funcionará sem erros
 
 public class TaskManager
 {
     public static void Main(string[] args)
     {
         Console.WriteLine("==============================");
-        Console.WriteLine("Task Manager v1.0");
+        Console.WriteLine("Task Manager v1.1");
         Console.WriteLine("===============================");
-
-        List<int> ID = new List<int>();
-        List<string> chamados = new List<string>();
-        int op = 0;
-
+        
+        int op;
+        int idChamado = 1;
+        List<Chamado> listaDoSistema = new List<Chamado>();
 
         do
         {
-            Console.WriteLine("Escolha uma opção: ");
+            Console.WriteLine("\nEscolha uma opção: ");
             Console.WriteLine("1. Adicionar um Chamado.");
             Console.WriteLine("2. Listar Chamados.");
             Console.WriteLine("3. Remover um Chamado.");
+            Console.WriteLine("4. Sair.");
+            
             op = Convert.ToInt32(Console.ReadLine());
+            
             if (op == 1)
             {
                 Console.WriteLine("Digite o chamado: ");
-                string chamado = Console.ReadLine();
-                if (ID.Count == 0)
+                var chamado = Console.ReadLine();
+                
+                if (chamado != null && chamado != "")
                 {
-                    ID.Add(1);
-                    chamados.Add(chamado);
-                } else if (ID.Count != 0)
-                {
-                    int ultimoID = ID[^1];
-                    int nextID = ultimoID + 1;
-                    ID.Add(nextID);
-                    chamados.Add(chamado);
+                    Chamado novoChamado = new Chamado(idChamado, chamado);
+                    listaDoSistema.Add(novoChamado);
+                    
+                    idChamado++; // Só incrementa se o chamado realmente foi criado
+                    Console.WriteLine("Chamado adicionado com sucesso!");
                 }
-            } else if (op == 2)
+            } 
+            else if (op == 2)
             {
-                for (int i = 0; i < ID.Count; i++)
+                Console.WriteLine("\nExibindo Chamados Abertos: ");
+                if (listaDoSistema.Count == 0)
                 {
-                    Console.WriteLine($"ID: {ID[i]} | Chamado: {chamados[i]}");
+                    Console.WriteLine("Nenhum chamado aberto.");
                 }
-            } else if (op == 3)
+                else
+                {
+                    for (int i = 0; i < listaDoSistema.Count; i++)
+                    {
+                        Console.WriteLine($"ID: {listaDoSistema[i].ID_Chamados} - {listaDoSistema[i].Chamados_Desc}");
+                    }
+                }
+            } 
+            else if (op == 3)
             {
-                Console.WriteLine("Informe o ID do chamado a ser removido: ");
-                int id = Convert.ToInt32(Console.ReadLine());
-                int indiceASerRemovido = ID.IndexOf(id);
-                ID.RemoveAt(indiceASerRemovido);
-                chamados.RemoveAt(indiceASerRemovido);
+                Console.WriteLine("\nRemover chamado:\n Informe o ID");
+                int idRemover = Convert.ToInt32(Console.ReadLine());
+                bool encontrado = false;
+                
+                for (int i = 0; i < listaDoSistema.Count; i++)
+                {
+                    if (listaDoSistema[i].ID_Chamados == idRemover)
+                    {
+                        listaDoSistema.RemoveAt(i);
+                        Console.WriteLine("Removido com Sucesso!");
+                        encontrado = true;
+                        break; 
+                    }   
+                }
+
+                if (!encontrado)
+                {
+                    Console.WriteLine("Nenhum chamado encontrado com esse ID.");
+                }
             }
         } while (op != 4);
-
-        
-            
     }
 }
