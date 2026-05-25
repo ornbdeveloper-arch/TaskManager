@@ -1,0 +1,20 @@
+﻿# 🛠️ TaskManager - V1.0.2
+
+O projeto surgiu como um meio para aprender a linguagem C# e sua intenção é que continue sendo atualizado conforme meus estudos com a linguagem avancem.
+
+---
+
+## 📈 Histórico de Evolução
+
+### 🔹 Detalhes da V1.0.0
+No início, usei um esquema de listas para armazenar os dados dos chamados: uma lista para o **ID** e outra para o **corpo dos chamados**.
+A conexão entre eles era feita pelo índice das duas listas. Portanto, o ID 1 que ficava no índice `0` era conectado ao chamado que também estava no índice `0` da outra lista.
+
+### 🔹 Detalhes da V1.0.1
+Aqui já comecei a aplicar conceitos de Orientação a Objetos e usei **classes** para armazenar as informações.  
+Criei a classe `Chamado`, onde centralizei os atributos dos chamados e o método de adição.
+
+### 🔹 Detalhes da V1.0.2 *(Versão Atual)*
+Nesta versão, adicionei mais atributos aos chamados, dando mais identidade a eles. Além disso:
+- Comentei todos os trechos importantes da aplicação para testar e fixar a sintaxe da linguagem.
+- Criei este arquivo `README.md`, aplicando um novo aprendizado sobre documentação diretamente no repositório do app.

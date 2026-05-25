@@ -1,27 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Cavz\\Desktop\\TaskManager\\TaskManager\\TaskManager\\TaskManager.csproj": {}
+    "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager\\TaskManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Cavz\\Desktop\\TaskManager\\TaskManager\\TaskManager\\TaskManager.csproj": {
+    "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager\\TaskManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cavz\\Desktop\\TaskManager\\TaskManager\\TaskManager\\TaskManager.csproj",
+        "projectUniqueName": "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager\\TaskManager.csproj",
         "projectName": "TaskManager",
-        "projectPath": "C:\\Users\\Cavz\\Desktop\\TaskManager\\TaskManager\\TaskManager\\TaskManager.csproj",
-        "packagesPath": "C:\\Users\\Cavz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cavz\\Desktop\\TaskManager\\TaskManager\\TaskManager\\obj\\",
+        "projectPath": "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager\\TaskManager.csproj",
+        "packagesPath": "C:\\Users\\MBSuporte\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Cavz\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\MBSuporte\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net10.0": {
             "targetAlias": "net10.0",
