@@ -9,7 +9,7 @@ public class TaskManager // Criação da classe principal da aplicação.
     {
         // Cabeçalho.
         Console.WriteLine("==============================");
-        Console.WriteLine("Task Manager v1.1");
+        Console.WriteLine("Task Manager v1.0.4");
         Console.WriteLine("===============================");
         
         int op; // Inicialização da variável de opção.
@@ -18,6 +18,7 @@ public class TaskManager // Criação da classe principal da aplicação.
         List<Usuario> ListaDeUsuarios = new List<Usuario>();
         List<Cartegoria> ListaDeCartegorias = new List<Cartegoria>();
         List<SLA> ListaDeSLA = new List<SLA>();
+        // Inicialização das listas adicionado o conteúdo delas.
         // =============================================================================================
         ListaDeUsuarios.Add(new Usuario(1, "Bruno", "ornb.developer@gmail.com"));
         // =============================================================================================
@@ -29,9 +30,10 @@ public class TaskManager // Criação da classe principal da aplicação.
         ListaDeCartegorias.Add(new Cartegoria(1, "Hardware", "Problemas com computador"  ));
         ListaDeCartegorias.Add(new Cartegoria(2, "Software", "Problemas com sistema"  ));
         ListaDeCartegorias.Add(new Cartegoria(3, "Rede", "Problemas com internet"  ));
-        ListaDeCartegorias.Add(new Cartegoria(4, "Problemas gerais", "Problemas generalizadosr"  ));
+        ListaDeCartegorias.Add(new Cartegoria(4, "Problemas gerais", "Problemas generalizados"  ));
         // =============================================================================================
         
+        // Início do loop do onde o menu de ações é executado.
         do
         {
             // Cabeçalho; Opções de uso.
@@ -60,6 +62,7 @@ public class TaskManager // Criação da classe principal da aplicação.
                     Cartegoria categoriaAtual = ListaDeCartegorias[0];
                     SLA slaAtual = ListaDeSLA[0];
                     
+                    // Builder do objeto Chamado.
                     Chamado novoChamado = new Chamado(idChamado, chamado, tituloChamado, usuarioAtual, categoriaAtual, slaAtual);
                     listaDoSistema.Add(novoChamado);
                     
@@ -78,7 +81,7 @@ public class TaskManager // Criação da classe principal da aplicação.
                 {
                     for (int i = 0; i < listaDoSistema.Count; i++) // Loop que exibe cada objeto de chamado baseado no índice.
                     {
-                        
+                        // Impressão do texto no terminal com os dados da lista de chamados.
                         Console.WriteLine($"ID: {listaDoSistema[i].ID_Chamados} - {listaDoSistema[i].Titulo_Chamados}\nDescrição: {listaDoSistema[i].Chamados_Desc}\nSLA: {listaDoSistema[i].SLADoChamado.SLANome}");
                     }
                 }
@@ -87,16 +90,16 @@ public class TaskManager // Criação da classe principal da aplicação.
             {
                 Console.WriteLine("\nRemover chamado:\n Informe o ID");
                 int idRemover = Convert.ToInt32(Console.ReadLine());
-                bool encontrado = false;
+                bool encontrado = false; // Variável de início pra testar se existe um chamado com esse ID.
                 
-                for (int i = 0; i < listaDoSistema.Count; i++)
+                for (int i = 0; i < listaDoSistema.Count; i++) // Loop que roda a lista de chamados buscando pelo ID mencionado
                 {
                     if (listaDoSistema[i].ID_Chamados == idRemover)
                     {
                         listaDoSistema.RemoveAt(i);
                         Console.WriteLine("Removido com Sucesso!");
-                        encontrado = true;
-                        break; 
+                        encontrado = true; //  Mudanã de estado da variável indicando que o ID foi encontrado na lista.
+                        break;  // Fim do loop.
                     }   
                 }
 

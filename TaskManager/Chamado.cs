@@ -7,7 +7,6 @@ public class Chamado
     public int ID_Chamados { get; set; }
     public string Chamados_Desc { get; set; }
     public string Titulo_Chamados { get; set; }
-    public string SLA_Chamado { get; set; }
     public Usuario usuarioLogado { get; set; }
     public Cartegoria CartegoriaDoChamado { get; set; }
     public SLA SLADoChamado { get; set; }
