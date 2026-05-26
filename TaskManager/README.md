@@ -1,4 +1,4 @@
-﻿# 🛠️ TaskManager - V1.0.2
+﻿_# 🛠️ TaskManager - V1.0.2
 
 O projeto surgiu como um meio para aprender a linguagem C# e sua intenção é que continue sendo atualizado conforme meus estudos com a linguagem avancem.
 
@@ -17,4 +17,7 @@ Criei a classe `Chamado`, onde centralizei os atributos dos chamados e o método
 ### 🔹 Detalhes da V1.0.2 *(Versão Atual)*
 Nesta versão, adicionei mais atributos aos chamados, dando mais identidade a eles. Além disso:
 - Comentei todos os trechos importantes da aplicação para testar e fixar a sintaxe da linguagem.
-- Criei este arquivo `README.md`, aplicando um novo aprendizado sobre documentação diretamente no repositório do app.
+- Criei este arquivo `README.md`, aplicando um novo aprendizado sobre documentação diretamente no repositório do app._
+### 🔹 Detalhes da V1.0.3 *(Versão Atual)*
+Nesta versão, foram adicionadas novas classes para usuários, sla, e cartegorias de chamados, nem todas estão em uso no momento, faltando apenas implementação no código principal.
+- Foi removido a escrita da prioridade, naõ sendo mais um texto alterável e sim um item pré definido com tempo estipulado.

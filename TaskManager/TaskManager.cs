@@ -15,7 +15,23 @@ public class TaskManager // Criação da classe principal da aplicação.
         int op; // Inicialização da variável de opção.
         int idChamado = 1; // Inicialização da variável de ID
         List<Chamado> listaDoSistema = new List<Chamado>(); // Criação da lista de chamados.
-
+        List<Usuario> ListaDeUsuarios = new List<Usuario>();
+        List<Cartegoria> ListaDeCartegorias = new List<Cartegoria>();
+        List<SLA> ListaDeSLA = new List<SLA>();
+        // =============================================================================================
+        ListaDeUsuarios.Add(new Usuario(1, "Bruno", "ornb.developer@gmail.com"));
+        // =============================================================================================
+        ListaDeSLA.Add(new SLA(1, "Baixo", (byte)0, (short)48));
+        ListaDeSLA.Add(new SLA(2, "Médio", (byte)0, (short)24));
+        ListaDeSLA.Add(new SLA(3, "Alto", (byte)0, (short)6));
+        ListaDeSLA.Add(new SLA(4, "Crítico", (byte)0, (short)2));
+        // =============================================================================================
+        ListaDeCartegorias.Add(new Cartegoria(1, "Hardware", "Problemas com computador"  ));
+        ListaDeCartegorias.Add(new Cartegoria(2, "Software", "Problemas com sistema"  ));
+        ListaDeCartegorias.Add(new Cartegoria(3, "Rede", "Problemas com internet"  ));
+        ListaDeCartegorias.Add(new Cartegoria(4, "Problemas gerais", "Problemas generalizadosr"  ));
+        // =============================================================================================
+        
         do
         {
             // Cabeçalho; Opções de uso.
@@ -30,17 +46,21 @@ public class TaskManager // Criação da classe principal da aplicação.
             // Início das condicionais baseado na opção escolhida, futuramente mudar para estrutura de Switch.
             if (op == 1)
             {
-                Console.WriteLine("Digite o chamado: ");
+                Console.WriteLine("Digite a descrição do chamado: ");
                 var chamado = Console.ReadLine();
                 Console.WriteLine("Digite um título pro chamado: ");
                 var tituloChamado = Console.ReadLine();
-                Console.WriteLine("Digite a prioridade do chamado: ");
-                var slaChamado = Console.ReadLine();
+                
+               
                 
                 if (chamado != null && chamado != "") // Validaçao garantindo que o chamado não está vazio.
                 {
                     // Criação do objeto do chamado e adição a lista de chamados.
-                    Chamado novoChamado = new Chamado(idChamado, chamado, slaChamado, tituloChamado);
+                    Usuario usuarioAtual = ListaDeUsuarios[0];
+                    Cartegoria categoriaAtual = ListaDeCartegorias[0];
+                    SLA slaAtual = ListaDeSLA[0];
+                    
+                    Chamado novoChamado = new Chamado(idChamado, chamado, tituloChamado, usuarioAtual, categoriaAtual, slaAtual);
                     listaDoSistema.Add(novoChamado);
                     
                     idChamado++;  // Autoincrement do ID único do chamado.
@@ -58,7 +78,8 @@ public class TaskManager // Criação da classe principal da aplicação.
                 {
                     for (int i = 0; i < listaDoSistema.Count; i++) // Loop que exibe cada objeto de chamado baseado no índice.
                     {
-                        Console.WriteLine($"ID: {listaDoSistema[i].ID_Chamados} - {listaDoSistema[i].Titulo_Chamados}\n{listaDoSistema[i].Chamados_Desc}\n{listaDoSistema[i].SLA_Chamado}");
+                        
+                        Console.WriteLine($"ID: {listaDoSistema[i].ID_Chamados} - {listaDoSistema[i].Titulo_Chamados}\nDescrição: {listaDoSistema[i].Chamados_Desc}\nSLA: {listaDoSistema[i].SLADoChamado.SLANome}");
                     }
                 }
             } 
@@ -87,5 +108,4 @@ public class TaskManager // Criação da classe principal da aplicação.
         } while (op != 4); // Saída do app.
     }
 }
-
 // Fim do sistema.
