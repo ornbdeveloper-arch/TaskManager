@@ -5,8 +5,8 @@ public class Chamado
 {
     // Atributos da Classe.
     public int ID_Chamados { get; set; }
-    public string Chamados_Desc { get; set; }
     public string Titulo_Chamados { get; set; }
+    public string Chamados_Desc { get; set; }
     public Usuario usuarioLogado { get; set; }
     public Cartegoria CartegoriaDoChamado { get; set; }
     public SLA SLADoChamado { get; set; }
@@ -16,9 +16,10 @@ public class Chamado
     // Deixamos apenas os 6 parâmetros que importam, sem aquela string solta de SLA
     public Chamado(int id, string descricao, string titulo, Usuario usuario, Cartegoria cartegoria, SLA sla)
     {
+        // Métodos da classe Chamado.
         ID_Chamados = id;
-        Chamados_Desc = descricao;
         Titulo_Chamados = titulo;
+        Chamados_Desc = descricao;
         usuarioLogado = usuario;
         CartegoriaDoChamado = cartegoria;
         SLADoChamado = sla;

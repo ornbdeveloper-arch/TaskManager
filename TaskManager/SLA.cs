@@ -1,5 +1,7 @@
 ﻿namespace TaskManager;
 
+
+// Criação da classe SLA.
 public class SLA
 {
     public int SLAID { get; set; }

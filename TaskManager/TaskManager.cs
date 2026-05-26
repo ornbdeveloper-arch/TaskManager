@@ -1,4 +1,4 @@
-﻿// Início do sistema; Inicialização das dependências do sistema.
+﻿// Início do sistema. Inicialização das dependências do sistema.
 namespace TaskManager;
 using System;
 using System.Collections.Generic; 
@@ -48,10 +48,10 @@ public class TaskManager // Criação da classe principal da aplicação.
             // Início das condicionais baseado na opção escolhida, futuramente mudar para estrutura de Switch.
             if (op == 1)
             {
-                Console.WriteLine("Digite a descrição do chamado: ");
-                var chamado = Console.ReadLine();
                 Console.WriteLine("Digite um título pro chamado: ");
                 var tituloChamado = Console.ReadLine();
+                Console.WriteLine("Digite a descrição do chamado: ");
+                var chamado = Console.ReadLine();
                 
                
                 
