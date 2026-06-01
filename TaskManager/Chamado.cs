@@ -44,13 +44,13 @@ public class Chamado
     }
 
     public Usuario usuarioLogado { get; set; }
-    public Cartegoria CartegoriaDoChamado { get; set; }
-    public SLA SLADoChamado { get; set; }
+    public Categoria CartegoriaDoChamado { get; set; }
+  
 
 
     // Métodos da Classe.
     // Deixamos apenas os 6 parâmetros que importam, sem aquela string solta de SLA
-    public Chamado(int id, string descricao, string titulo, Usuario usuario, Cartegoria cartegoria, SLA sla)
+    public Chamado(int id, string descricao, string titulo, Usuario usuario, Categoria cartegoria)
     {
         // Métodos da classe Chamado.
         ID_Chamados = id;
@@ -58,6 +58,5 @@ public class Chamado
         Chamados_Desc = descricao;
         usuarioLogado = usuario;
         CartegoriaDoChamado = cartegoria;
-        SLADoChamado = sla;
     }
 }

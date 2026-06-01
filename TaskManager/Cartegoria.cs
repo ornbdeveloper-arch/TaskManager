@@ -1,16 +1,32 @@
 ﻿namespace TaskManager;
 
-public class Cartegoria
+public class Categoria
 {
-    public int CartegoriaID { get; set; }
-    public string CartegoriaNome { get; set; }
-    public string CartegoriaDescricao { get; set; }
+    public int CategoriaID { get; private set; }
+    public string CategoriaNome { get; private set; }
+    public string CategoriaDescricao { get; private set; }
+    public SLA SLADACategoria { get; private set; }
 
 
-    public Cartegoria(int cartegoriaId, string cartegoriaNome, string cartegoriaDescricao)
+    public Categoria(int cartegoriaId, string cartegoriaNome, string cartegoriaDescricao, SLA sla)
     {
-        CartegoriaID = cartegoriaId;
-        CartegoriaNome = cartegoriaNome;
-        CartegoriaDescricao = cartegoriaDescricao;
+        if (string.IsNullOrWhiteSpace(cartegoriaNome))
+        {
+            throw new ArgumentException("O nome da categoria não pode estar vázio");
+        }
+
+        if (string.IsNullOrWhiteSpace(cartegoriaDescricao))
+        {
+            throw new ArgumentException("A descrição da categoria não pode estar em branco.");
+        }
+
+        if (sla == null)
+        {
+            throw new ArgumentException("A categoria precisa terum SLA");
+        }
+        CategoriaID = cartegoriaId;
+        CategoriaNome = cartegoriaNome;
+        CategoriaDescricao = cartegoriaDescricao;
+        SLADACategoria = sla;
     }
 }

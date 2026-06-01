@@ -16,21 +16,22 @@ public class TaskManager // Criação da classe principal da aplicação.
         int idChamado = 1; // Inicialização da variável de ID
         List<Chamado> listaDoSistema = new List<Chamado>(); // Criação da lista de chamados.
         List<Usuario> ListaDeUsuarios = new List<Usuario>();
-        List<Cartegoria> ListaDeCartegorias = new List<Cartegoria>();
-        List<SLA> ListaDeSLA = new List<SLA>();
+        List<Categoria> ListaDeCartegorias = DadosDoSistema.CarregarCategoria();
+        List<SLA> ListaDeSLA = DadosDoSistema.CarregarSLAs();
+        int opCAt = 0;
         // Inicialização das listas adicionado o conteúdo delas.
         // =============================================================================================
         ListaDeUsuarios.Add(new Usuario(1, "Bruno", "ornb.developer@gmail.com"));
         // =============================================================================================
-        ListaDeSLA.Add(new SLA(1, "Baixo", (byte)0, (short)48));
-        ListaDeSLA.Add(new SLA(2, "Médio", (byte)0, (short)24));
-        ListaDeSLA.Add(new SLA(3, "Alto", (byte)0, (short)6));
-        ListaDeSLA.Add(new SLA(4, "Crítico", (byte)0, (short)2));
+        //ListaDeSLA.Add(new SLA(1, "Baixo", (byte)0, (short)48));
+        //ListaDeSLA.Add(new SLA(2, "Médio", (byte)0, (short)24));
+        //ListaDeSLA.Add(new SLA(3, "Alto", (byte)0, (short)6));
+        //ListaDeSLA.Add(new SLA(4, "Crítico", (byte)0, (short)2));
         // =============================================================================================
-        ListaDeCartegorias.Add(new Cartegoria(1, "Hardware", "Problemas com computador"  ));
-        ListaDeCartegorias.Add(new Cartegoria(2, "Software", "Problemas com sistema"  ));
-        ListaDeCartegorias.Add(new Cartegoria(3, "Rede", "Problemas com internet"  ));
-        ListaDeCartegorias.Add(new Cartegoria(4, "Problemas gerais", "Problemas generalizados"  ));
+        //ListaDeCartegorias.Add(new Categoria(1, "Hardware", "Problemas com computador", ListaDeSLA[0]));
+        //ListaDeCartegorias.Add(new Categoria(2, "Software", "Problemas com sistema", ListaDeSLA[1]));
+        //ListaDeCartegorias.Add(new Categoria(3, "Rede", "Problemas com internet", ListaDeSLA[2]));
+        //ListaDeCartegorias.Add(new Categoria(4, "Problemas gerais", "Problemas generalizados", ListaDeSLA[3]));
         // =============================================================================================
         
         // Início do loop do onde o menu de ações é executado.
@@ -48,10 +49,15 @@ public class TaskManager // Criação da classe principal da aplicação.
             // Início das condicionais baseado na opção escolhida, futuramente mudar para estrutura de Switch.
             if (op == 1)
             {
+                
                 Console.WriteLine("Digite um título pro chamado: ");
                 var tituloChamado = Console.ReadLine();
                 Console.WriteLine("Digite a descrição do chamado: ");
                 var chamado = Console.ReadLine();
+                Console.WriteLine("Escolha a categoria do chamado: ");
+                Console.WriteLine("1. Hardware\n 2. Software\n 3. Rede\n 4. Problemas gerais");
+                opCAt = Convert.ToInt32(Console.ReadLine());
+                Categoria cartegoriaAtual = ListaDeCartegorias[opCAt];
                 
                
                 
@@ -59,11 +65,10 @@ public class TaskManager // Criação da classe principal da aplicação.
                 {
                     // Criação do objeto do chamado e adição a lista de chamados.
                     Usuario usuarioAtual = ListaDeUsuarios[0];
-                    Cartegoria categoriaAtual = ListaDeCartegorias[0];
-                    SLA slaAtual = ListaDeSLA[0];
+                    Categoria categoriaAtual = ListaDeCartegorias[opCAt - 1];
                     
                     // Builder do objeto Chamado.
-                    Chamado novoChamado = new Chamado(idChamado, chamado, tituloChamado, usuarioAtual, categoriaAtual, slaAtual);
+                    Chamado novoChamado = new Chamado(idChamado, chamado, tituloChamado, usuarioAtual, categoriaAtual);
                     listaDoSistema.Add(novoChamado);
                     
                     idChamado++;  // Autoincrement do ID único do chamado.
@@ -82,7 +87,7 @@ public class TaskManager // Criação da classe principal da aplicação.
                     for (int i = 0; i < listaDoSistema.Count; i++) // Loop que exibe cada objeto de chamado baseado no índice.
                     {
                         // Impressão do texto no terminal com os dados da lista de chamados.
-                        Console.WriteLine($"ID: {listaDoSistema[i].ID_Chamados} - {listaDoSistema[i].Titulo_Chamados}\nDescrição: {listaDoSistema[i].Chamados_Desc}\nSLA: {listaDoSistema[i].SLADoChamado.SLANome}");
+                        Console.WriteLine($"ID: {listaDoSistema[i].ID_Chamados} - {listaDoSistema[i].Titulo_Chamados}\nDescrição: {listaDoSistema[i].Chamados_Desc}\nSLA: {listaDoSistema[i].CartegoriaDoChamado.SLADACategoria.SLANome}\nCartegoria: {listaDoSistema[i].CartegoriaDoChamado.CategoriaNome}");
                     }
                 }
             } 
