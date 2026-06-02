@@ -22,8 +22,9 @@ public class Categoria
 
         if (sla == null)
         {
-            throw new ArgumentException("A categoria precisa terum SLA");
+            throw new ArgumentException("A categoria precisa ter um SLA");
         }
+        
         CategoriaID = cartegoriaId;
         CategoriaNome = cartegoriaNome;
         CategoriaDescricao = cartegoriaDescricao;

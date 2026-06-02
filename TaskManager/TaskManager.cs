@@ -17,7 +17,6 @@ public class TaskManager // Criação da classe principal da aplicação.
         List<Chamado> listaDoSistema = new List<Chamado>(); // Criação da lista de chamados.
         List<Usuario> ListaDeUsuarios = new List<Usuario>();
         List<Categoria> ListaDeCartegorias = DadosDoSistema.CarregarCategoria();
-        List<SLA> ListaDeSLA = DadosDoSistema.CarregarSLAs();
         int opCAt = 0;
         // Inicialização das listas adicionado o conteúdo delas.
         // =============================================================================================
@@ -42,7 +41,9 @@ public class TaskManager // Criação da classe principal da aplicação.
             Console.WriteLine("1. Adicionar um Chamado.");
             Console.WriteLine("2. Listar Chamados.");
             Console.WriteLine("3. Remover um Chamado.");
-            Console.WriteLine("4. Sair.");
+            Console.WriteLine("4. Iniciar atendimento de um chamado.");
+            Console.WriteLine("5. Fechar um chamado.");
+            Console.WriteLine("6. Sair.");
             
             op = Convert.ToInt32(Console.ReadLine());
             
@@ -54,12 +55,12 @@ public class TaskManager // Criação da classe principal da aplicação.
                 var tituloChamado = Console.ReadLine();
                 Console.WriteLine("Digite a descrição do chamado: ");
                 var chamado = Console.ReadLine();
+                Console.WriteLine("Informe o contrato: ");
+                var contrato = Console.ReadLine();
                 Console.WriteLine("Escolha a categoria do chamado: ");
                 Console.WriteLine("1. Hardware\n 2. Software\n 3. Rede\n 4. Problemas gerais");
                 opCAt = Convert.ToInt32(Console.ReadLine());
-                Categoria cartegoriaAtual = ListaDeCartegorias[opCAt];
                 
-               
                 
                 if (chamado != null && chamado != "") // Validaçao garantindo que o chamado não está vazio.
                 {
@@ -68,7 +69,7 @@ public class TaskManager // Criação da classe principal da aplicação.
                     Categoria categoriaAtual = ListaDeCartegorias[opCAt - 1];
                     
                     // Builder do objeto Chamado.
-                    Chamado novoChamado = new Chamado(idChamado, chamado, tituloChamado, usuarioAtual, categoriaAtual);
+                    Chamado novoChamado = new Chamado(idChamado, chamado, tituloChamado, usuarioAtual, categoriaAtual, contrato);
                     listaDoSistema.Add(novoChamado);
                     
                     idChamado++;  // Autoincrement do ID único do chamado.
@@ -87,7 +88,7 @@ public class TaskManager // Criação da classe principal da aplicação.
                     for (int i = 0; i < listaDoSistema.Count; i++) // Loop que exibe cada objeto de chamado baseado no índice.
                     {
                         // Impressão do texto no terminal com os dados da lista de chamados.
-                        Console.WriteLine($"ID: {listaDoSistema[i].ID_Chamados} - {listaDoSistema[i].Titulo_Chamados}\nDescrição: {listaDoSistema[i].Chamados_Desc}\nSLA: {listaDoSistema[i].CartegoriaDoChamado.SLADACategoria.SLANome}\nCartegoria: {listaDoSistema[i].CartegoriaDoChamado.CategoriaNome}");
+                        Console.WriteLine($"ID: {listaDoSistema[i].ID_Chamados} - {listaDoSistema[i].Titulo_Chamados}\nDescrição: {listaDoSistema[i].Chamados_Desc}\nSLA: {listaDoSistema[i].CartegoriaDoChamado.SLADACategoria.SLANome}\nCartegoria: {listaDoSistema[i].CartegoriaDoChamado.CategoriaNome}\nStatus: {listaDoSistema[i].Status}");
                     }
                 }
             } 
@@ -112,8 +113,46 @@ public class TaskManager // Criação da classe principal da aplicação.
                 {
                     Console.WriteLine("Nenhum chamado encontrado com esse ID.");
                 }
+            } else if (op == 4)
+            {
+                Console.WriteLine("Informe o ID do chamado: ");
+                int IdIniciar = Convert.ToInt32(Console.ReadLine());
+                bool encontrado = false;
+
+                for (int i = 0; i < listaDoSistema.Count; i++)
+                {
+                    if (listaDoSistema[i].ID_Chamados == IdIniciar)
+                    {
+                        listaDoSistema[i].IniciarAtendimento();
+                        Console.WriteLine("Atendimento iniciado.");
+                        encontrado = true;
+                        break;
+                    }
+                }
+
+                if (!encontrado)
+                    Console.WriteLine("Nenhum chamado encontrado com esse ID.");
+            } else if (op == 5)
+            {
+                Console.WriteLine("Informe o ID do chamado para finalizar: ");
+                int IdFim = Convert.ToInt32(Console.ReadLine());
+                bool encontrado = false;
+
+                for (int i = 0; i < listaDoSistema.Count; i++)
+                {
+                    if (listaDoSistema[i].ID_Chamados == IdFim)
+                    {
+                        listaDoSistema[i].FecharChamado();
+                        Console.WriteLine("Chamado encerrado com sucesso!");
+                        encontrado = true;
+                        break;
+                    }
+                }
+
+                if (!encontrado)
+                    Console.WriteLine("Nenhum chamado encontrado com esse ID.");
             }
-        } while (op != 4); // Saída do app.
+        } while (op != 6); // Saída do app.
     }
 }
 // Fim do sistema.
