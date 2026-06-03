@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager\\TaskManager.csproj": {}
+    "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager.Tests\\TaskManager.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager\\TaskManager.csproj": {
+    "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager.Tests\\TaskManager.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager\\TaskManager.csproj",
-        "projectName": "TaskManager",
-        "projectPath": "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager\\TaskManager.csproj",
+        "projectUniqueName": "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager.Tests\\TaskManager.Tests.csproj",
+        "projectName": "TaskManager.Tests",
+        "projectPath": "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager.Tests\\TaskManager.Tests.csproj",
         "packagesPath": "C:\\Users\\MBSuporte\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager\\obj\\",
+        "outputPath": "C:\\Users\\MBSuporte\\Desktop\\TaskManager\\TaskManager.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MBSuporte\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -24,6 +24,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -42,7 +43,26 @@
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.14.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
